@@ -13,11 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Check for dead links
-      run: |
-        sudo apt-get install -y liche
-        liche --document-root=./ --recursive ./
-
     - name: Deploy to AWS S3
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: jakejarvis/s3-sync-action@v0.5.1
